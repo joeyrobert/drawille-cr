@@ -13,7 +13,7 @@ DISK_RIGHT  = DISK_LEFT + DISK_SIZE
 DISK_BOTTOM = DISK_TOP + DISK_SIZE
 
 def run_animation(planet, speed)
-  c = Canvas.new
+  c = DrawilleCanvas.new
   planet = StumpyJPEG.read("examples/textures/#{planet}.jpg")
   planet_height = planet.height
   frame = 0

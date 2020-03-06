@@ -22,7 +22,7 @@ WHITE               = {255_u8, 255_u8, 255_u8}
 
 alias RGB = Tuple(UInt8, UInt8, UInt8)
 
-class Canvas
+class DrawilleCanvas
   def initialize
     @viewport = Hash(Int32, RGB).new(WHITE)
   end
