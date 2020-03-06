@@ -1,0 +1,11 @@
+name: drawille.cr
+version: 0.1.0
+
+authors:
+  - Joey Robert <joey@joeyrobert.org>
+
+development_dependencies:
+  stumpy_jpeg:
+    github: reiswindy/stumpy_jpeg
+
+license: AGPLv3

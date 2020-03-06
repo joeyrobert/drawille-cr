@@ -1,0 +1,14 @@
+version: 1.0
+shards:
+  matrix:
+    github: Exilor/matrix
+    commit: 21b6faf1480ece574180abff2ee675483314af38
+
+  stumpy_core:
+    github: stumpycr/stumpy_core
+    version: 1.9.1
+
+  stumpy_jpeg:
+    github: reiswindy/stumpy_jpeg
+    commit: 714ad6c1f905cb503c53843cda8285f52592e2c2
+
