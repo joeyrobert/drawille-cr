@@ -3,7 +3,7 @@
 require "stumpy_jpeg"
 require "colorize"
 require "option_parser"
-require "../drawille"
+require "../src/drawille"
 
 SCALE_COEFF = 0.8
 DISK_SIZE   = (Math.min(VIEWPORT_WIDTH, VIEWPORT_HEIGHT) * SCALE_COEFF).to_i32
@@ -12,7 +12,7 @@ DISK_TOP    = (VIEWPORT_HEIGHT - DISK_SIZE) // 2
 DISK_RIGHT  = DISK_LEFT + DISK_SIZE
 DISK_BOTTOM = DISK_TOP + DISK_SIZE
 
-def run_animation(planet, speed)
+def run_animation(planet, speed, fps)
   c = DrawilleCanvas.new
   planet = StumpyJPEG.read("examples/textures/#{planet}.jpg")
   planet_height = planet.height
@@ -34,6 +34,11 @@ def run_animation(planet, speed)
 
         # Latitude/longitude method
         width_at_height = Math.sqrt(1 - py * py)
+
+        if width_at_height == 0.0
+          next
+        end
+
         px = Math.asin(px / width_at_height) * 2 / Math::PI
         py = Math.asin(py) * 2 / Math::PI
         u = frame * speed + (px + 1) * (planet.height / 2)
@@ -46,7 +51,7 @@ def run_animation(planet, speed)
 
     print "\e[0;0H"
     print c.render
-    amount_to_sleep = Math.max(1/20 - (Time.utc - start).total_seconds, 0)
+    amount_to_sleep = Math.max(1/fps - (Time.utc - start).total_seconds, 0)
     sleep amount_to_sleep
     frame += 1
   end
@@ -60,11 +65,13 @@ PLANETS = [
 
 chosen_planet = "earth"
 chosen_speed = 1
+chosen_fps = 20
 
 OptionParser.parse do |parser|
   parser.banner = "Usage: planet [arguments]"
   parser.on("-p PLANET", "--planet=PLANET", "Planet (possible planets: #{PLANETS.join(", ")})") { |planet| chosen_planet = planet }
-  parser.on("-r ROTATION_SPEED", "--rotation-speed=ROTATION_SPEED", "Speed to rotaton the planet (>=1)") { |speed| chosen_speed = speed.to_i }
+  parser.on("-r ROTATION_SPEED", "--rotation-speed=ROTATION_SPEED", "Speed to rotation the planet (>=1)") { |speed| chosen_speed = speed.to_i }
+  parser.on("-f FPS", "--frames-per-secon=FPS", "Frames per second (>=1)") { |fps| chosen_fps = fps.to_i }
   parser.on("-h", "--help", "Show this help") { puts parser }
   parser.invalid_option do |flag|
     STDERR.puts "ERROR: #{flag} is not a valid option."
@@ -73,4 +80,4 @@ OptionParser.parse do |parser|
   end
 end
 
-run_animation(chosen_planet, chosen_speed)
+run_animation(chosen_planet, chosen_speed, chosen_fps)

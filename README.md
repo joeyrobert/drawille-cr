@@ -3,7 +3,7 @@
 Based on the the [drawille](https://github.com/asciimoo/drawille) library for Python,
 this library allows the developer to draw using Unicode braille symbols in the terminal.
 
-![Earth Rotation](earth-rotation.gif)
+![Earth Rotation](examples/earth-rotation.gif)
 
 ### Notes
 
