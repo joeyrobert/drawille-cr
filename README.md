@@ -14,7 +14,21 @@ that you wish to see, please feel free to fork or submit a pull request.
 
 ## Usage
 
-See [examples](examples) for info on how to use, or just read the [implementation](drawille-cr).
+```crystal
+require "drawille-cr"
+
+c = DrawilleCanvas.new
+
+(0..180).each do |x|
+  c.set(x, (10 + Math.sin(x * 2 / Math::PI * 10) * 10).to_i32)
+end
+
+print c.render
+```
+
+![Basic Example](examples/basic.png)
+
+See [examples](examples) for more info on how to use, or read the [implementation](drawille-cr).
 
 ## Installation
 
