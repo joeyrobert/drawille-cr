@@ -3,7 +3,7 @@
 require "stumpy_jpeg"
 require "colorize"
 require "option_parser"
-require "../src/drawille"
+require "../src/drawille-cr"
 
 SCALE_COEFF = 0.8
 DISK_SIZE   = (Math.min(VIEWPORT_WIDTH, VIEWPORT_HEIGHT) * SCALE_COEFF).to_i32

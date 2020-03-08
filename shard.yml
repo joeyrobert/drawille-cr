@@ -3,13 +3,7 @@ version: 0.1.0
 description: Draw in the terminal using unicode braille characters
 authors:
   - Joey Robert <joey@joeyrobert.org>
-
-targets:
-  shards:
-    main: src/drawille.cr
-
 development_dependencies:
   stumpy_jpeg:
     github: reiswindy/stumpy_jpeg
-
 license: AGPLv3
