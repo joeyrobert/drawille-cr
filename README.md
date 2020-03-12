@@ -3,7 +3,7 @@
 Based on the the [drawille](https://github.com/asciimoo/drawille) library for Python,
 this library allows the developer to draw using Unicode braille symbols in the terminal.
 
-![Earth Rotation](examples/earth-rotation.gif)
+![Earth Rotation](examples/assets/earth-rotation.gif)
 
 ### Notes
 
@@ -17,7 +17,7 @@ that you wish to see, please feel free to fork or submit a pull request.
 ```crystal
 require "drawille-cr"
 
-c = DrawilleCanvas.new
+c = Drawille::Canvas.new
 
 (0..180).each do |x|
   c.set(x, (10 + Math.sin(x * 2 / Math::PI * 10) * 10).to_i32)
@@ -26,7 +26,7 @@ end
 print c.render
 ```
 
-![Basic Example](examples/basic.png)
+![Basic Example](examples/assets/basic.png)
 
 See [examples](examples) for more info on how to use, or read the [implementation](drawille-cr).
 
