@@ -1,5 +1,7 @@
 # drawille-cr
 
+[![Build Status](https://travis-ci.org/joeyrobert/drawille-cr.svg?branch=master)](https://travis-ci.org/joeyrobert/drawille-cr)
+
 Based on the the [drawille](https://github.com/asciimoo/drawille) library for Python,
 this library allows the developer to draw using Unicode braille symbols in the terminal.
 

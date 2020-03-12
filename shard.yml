@@ -1,5 +1,5 @@
 name: drawille-cr
-version: 0.1.0
+version: 0.2.0
 description: Draw in the terminal using unicode braille characters
 authors:
   - Joey Robert <joey@joeyrobert.org>
