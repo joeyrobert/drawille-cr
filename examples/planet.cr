@@ -16,7 +16,7 @@ class PlanetExample
     {disk_size, disk_top, disk_left, disk_bottom, disk_right}
   end
 
-  def draw_frame(c, planet_texture, frame, speed)
+  def draw_frame(c, planet_texture, frame, speed, reverse)
     c.clear
     disk_size, disk_top, disk_left, disk_bottom, disk_right = get_sizes(c)
     (disk_left...disk_right).each do |x|
@@ -34,7 +34,7 @@ class PlanetExample
         width_at_height = Math.sqrt(1 - py * py)
         px = Math.asin(px / width_at_height) * 2 / Math::PI
         py = Math.asin(py) * 2 / Math::PI
-        u = frame * speed + (px + 1) * (planet_texture.height / 2)
+        u = (reverse ? 1 : -1) * frame * speed + (px + 1) * (planet_texture.height / 2)
         v = (py + 1) * (planet_texture.height / 2)
         u = u % planet_texture.width
         begin
@@ -51,11 +51,11 @@ class PlanetExample
     StumpyJPEG.read("examples/textures/#{planet}.jpg")
   end
 
-  def run_animation(planet, speed, fps)
+  def run_animation(planet, speed, fps, reverse)
     c = Drawille::Canvas.new
     planet_texture = get_planet_texture(planet)
     c.animate do |frame|
-      draw_frame(c, planet_texture, frame, speed)
+      draw_frame(c, planet_texture, frame, speed, reverse)
     end
   end
 end
